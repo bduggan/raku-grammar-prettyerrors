@@ -1,4 +1,5 @@
 # Grammar::PrettyErrors
+[![Build Status](https://travis-ci.org/bduggan/p6-grammar-prettyerrors.svg?branch=master)](https://travis-ci.org/bduggan/p6-grammar-prettyerrors)
 
 Generate pretty errors when your parse fails.
 
