@@ -1,2 +1,12 @@
+module := Grammar-PrettyErrors
+version := $(shell jq -r .version META6.json)
+
 test:
-	prove -e 'perl6 -Ilib' t/*
+	TEST_AUTHOR=1 prove -e 'perl6 -Ilib' t/*
+
+dist:
+	echo "Making $(version)"
+	git archive --prefix=$(module)-$(version)/ -o dist/$(module)-$(version).tar.gz $(version)
+
+clean:
+	rm -f *.tar.gz

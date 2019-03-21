@@ -10,12 +10,12 @@
             "parsing"
         ],
     "depends" : [
-      "Terminal::ANSIColor",
+      "Terminal::ANSIColor"
     ],
     "description" : "Generate pretty errors when your parse fails",
     "test-depends" : [ ],
     "version" : "0.0.1",
-    "license" : "Perl",
+    "license" : "Artistic-2.0",
     "authors" : [
         "Brian Duggan"
     ]
