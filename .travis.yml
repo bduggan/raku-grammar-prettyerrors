@@ -1,6 +1,6 @@
 language: perl6
 perl6:
-  - latest
+  - 2019.03.1
 install:
   - rakudobrew build zef
   - zef install --depsonly .
