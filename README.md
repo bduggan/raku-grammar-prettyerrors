@@ -3,7 +3,7 @@
 
 Generate pretty errors when your parse fails.
 
-# SYNOPSIS
+## SYNOPSIS
 
 Input:
 
@@ -31,7 +31,7 @@ Uh oh, something went wrong around line 1.
 Unable to parse TOP.
 ```
 
-# DESCRIPTION
+## DESCRIPTION
 
 `Grammar::PrettyErrors` provides a role that can
 be applied to a grammar to provide pretty error
@@ -43,11 +43,11 @@ recent rule that was encountered.
 This technique is described by moritz in his
 excellent book [0] (see below).
 
-# CLASSES, ROLES
+## CLASSES, ROLES
 
-## Grammar::PrettyErrors (Role)
+### Grammar::PrettyErrors (Role)
 
-### ATTRIBUTES
+#### ATTRIBUTES
 
 * `quiet` -- Bool, default false: save errors, don't throw them.
 
@@ -55,14 +55,14 @@ excellent book [0] (see below).
 
 * `error` -- a `PrettyError` object (below).
 
-### METHODS
+#### METHODS
 
 * `new` -- wraps the `<ws>` token as described above, it also takes
   additional named arguments (to set the ATTRIBUTEs above).
 
-## PrettyError (class)
+### PrettyError (class)
 
-### METHODS
+#### METHODS
 
 * `line` -- the line number at which the parse failed (starting at 1).
 Or 0 if no lines were parsed;
@@ -75,7 +75,7 @@ Or 0 if no characters were parsed;
 * `report` -- the text of a report including the above information,
 with a few lines before and after.  (see SYNOPSIS)
 
-# EXAMPLES
+## EXAMPLES
 
 ```
 grammar G does Grammar::PrettyErrors { ... }
@@ -94,12 +94,12 @@ $g.parse('orange orange orange banana');
 say .report with $g.error;
 ```
 
-# SEE ALSO
+## SEE ALSO
 
 * [0] [Parsing with Perl 6 Regexes and Grammars](https://www.apress.com/us/book/9781484232279) and the accompanying [code](https://github.com/Apress/perl-6-regexes-and-grammars/blob/master/chapter-11-error-reporting/03-high-water-mark.p6)
 
 * Grammar::ErrorReporting
 
-# AUTHOR
+## AUTHOR
 
 Brian Duggan
