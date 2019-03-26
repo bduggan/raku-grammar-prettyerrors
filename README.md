@@ -27,7 +27,6 @@ Output:
                            ^
 
 Uh oh, something went wrong around line 1.
-
 Unable to parse TOP.
 ```
 
