@@ -3,7 +3,7 @@
 
 Generate pretty errors when your parse fails.
 
-# Synopsis
+# SYNOPSIS
 
 Input:
 
@@ -31,7 +31,7 @@ Uh oh, something went wrong around line 1.
 Unable to parse TOP.
 ```
 
-# Description
+# DESCRIPTION
 
 `Grammar::PrettyErrors` provides a role that can
 be applied to a grammar to provide pretty error
@@ -43,7 +43,7 @@ recent rule that was encountered.
 This technique is described by moritz in his
 excellent book [0] (see below).
 
-# Classes, Roles, Methods
+# CLASSES, ROLES
 
 ## Grammar::PrettyErrors (Role)
 
@@ -64,7 +64,16 @@ excellent book [0] (see below).
 
 ### METHODS
 
-* `report` -- returns the text of a report with the context for an error.
+* `line` -- the line number at which the parse failed (starting at 1).
+Or 0 if no lines were parsed;
+
+* `column` -- the column at which the parse failed (starting at 1).
+Or 0 if no characters were parsed;
+
+* `lastrule` -- the last rule which was parsed.
+
+* `report` -- the text of a report including the above information,
+with a few lines before and after.  (see SYNOPSIS)
 
 # EXAMPLES
 
