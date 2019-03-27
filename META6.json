@@ -12,7 +12,7 @@
     "depends" : [
       "Terminal::ANSIColor"
     ],
-    "description" : "Generate pretty errors when your parse fails",
+    "description" : "Make grammars fail parsing with a pretty error instead of returning nil",
     "test-depends" : [ ],
     "version" : "0.0.3",
     "license" : "Artistic-2.0",
