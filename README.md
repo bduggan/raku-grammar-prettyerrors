@@ -16,11 +16,11 @@ grammar G does Grammar::PrettyErrors {
   }
 }
 
-# Handle the failure:
+# Handle the failure.
 G.parse('orange orange orange banana') orelse
     say "parse failed at line {.exception.line}";
 
-# Don't handle it:
+# Don't handle it, an exception will be thrown:
 G.parse('orange orange orange banana');
 ```
 
