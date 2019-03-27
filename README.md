@@ -1,7 +1,7 @@
 # Grammar::PrettyErrors
 [![Build Status](https://travis-ci.org/bduggan/p6-grammar-prettyerrors.svg?branch=master)](https://travis-ci.org/bduggan/p6-grammar-prettyerrors)
 
-Generate pretty errors when your parse fails.
+Throw pretty errors when your parse fails.
 
 ## SYNOPSIS
 
@@ -16,12 +16,19 @@ grammar G does Grammar::PrettyErrors {
   }
 }
 
+# Handle the failure:
+G.parse('orange orange orange banana') orelse
+    say "parse failed at line {.exception.line}";
+
+# Don't handle it:
 G.parse('orange orange orange banana');
 ```
 
 Output:
 
 ```
+failed at line 1
+
 --errors--
   1 │▶orange orange orange banana
                            ^
@@ -32,9 +39,14 @@ Unable to parse TOP.
 
 ## DESCRIPTION
 
-`Grammar::PrettyErrors` provides a role that can
-be applied to a grammar to provide pretty error
-messages when a parse fails.  It works by wrapping
+When the `Grammar::PrettyErrors` role is applied
+to a Grammar, it changes the behavior of a parse
+failure.  Instead of returning `nil`, a failure
+is thrown.  The exception object has information
+about the context of the failure, and a pretty
+error message that be printed.
+
+It works by wrapping
 the `<ws>` token and keeping track of a highwater
 mark (the position), and the name of the most
 recent rule that was encountered.
@@ -59,7 +71,7 @@ excellent book [0] (see below).
 * `new` -- wraps the `<ws>` token as described above, it also takes
   additional named arguments (to set the ATTRIBUTEs above).
 
-### PrettyError (class)
+### X::Grammar::PrettyError (class)
 
 #### METHODS
 
@@ -91,6 +103,10 @@ $g.parse('orange orange orange banana');
 
 # Report a parse error
 say .report with $g.error;
+
+# Generate a message
+G.parse('orange orange orange banana') orelse
+    say "parse failed at line {.exception.line}";
 ```
 
 ## SEE ALSO
