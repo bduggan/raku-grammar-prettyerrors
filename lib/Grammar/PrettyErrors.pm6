@@ -91,7 +91,7 @@ role Grammar::PrettyErrors {
       my $error = X::Grammar::PrettyError.new(:$parsed,:$target,:$colors);
       $error.report($msg);
       $!error = $error if self.defined;
-      fail $error;
+      $error;
   }
 
   method parse( $target, |c) is hidden-from-backtrace {
@@ -100,6 +100,8 @@ role Grammar::PrettyErrors {
       my $*LASTRULE;
       my $match = callsame;
       return $match if $match;
-      fail self.report-error($target, "Parsing error.");
+      my $failure = self.report-error($target, "Parsing error.");
+      fail $failure unless $!quiet;
+      Nil;
   }
 }
