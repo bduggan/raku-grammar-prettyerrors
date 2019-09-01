@@ -1,4 +1,4 @@
-
+use v6.d;
 unit module Grammar::PrettyErrors;
 
 use Terminal::ANSIColor;
@@ -74,7 +74,8 @@ role Grammar::PrettyErrors {
     self.^find_method('ws').wrap: -> $match, |rest {
        my $pos = $match.pos + 1;
        $*HIGHWATER = $pos if $pos > $*HIGHWATER;
-       my $rule = callframe(4).code.name;
+       my $bt = Backtrace.new;
+       my $rule = $bt[$bt.next-interesting-index(:named)].code.name;
        $*LASTRULE = $rule unless $rule eq 'enter';
        callsame;
     }
