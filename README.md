@@ -47,10 +47,20 @@ about the context of the failure, and a pretty
 error message that includes some context around
 the input text.
 
-It works by wrapping
-the `<ws>` token and keeping track of a highwater
-mark (the position), and the name of the most
-recent rule that was encountered.
+It works by wrapping the `<ws>` token and keeping
+track of a highwater mark (the position), and the
+name of the most recent rule that was encountered.
+
+You can also use a token other than `<ws>` by sending
+a parameter to the role with the name of the token
+to use, e.g.
+
+```
+  grammar G does Grammar::PrettyErrors["myws"] {
+    ...
+    token myws { ... }
+  }
+```
 
 This technique is described by moritz in his
 excellent book [0] (see below).
