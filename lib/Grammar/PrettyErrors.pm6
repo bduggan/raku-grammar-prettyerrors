@@ -59,19 +59,23 @@ class X::Grammar::PrettyError is Exception {
   }
 }
 
-role Grammar::PrettyErrors {
+role Grammar::PrettyErrors[$ws = 'ws'] {
   has $.error;
   has $.quiet;
   has Bool $.colors = True;
 
   method new(|c) {
     return callsame unless self.defined;
-    unless self.^find_method('ws').^name ~~ / 'Regex' / {
-      my regex whitespace { <!ww> \s* }
-      self.^add_method('ws', &whitespace );
-      self.^compose;
+    unless self.^find_method($ws).^name ~~ / 'Regex' / {
+      if $ws eq 'ws' {
+        my regex whitespace { <!ww> \s* }
+        self.^add_method('ws', &whitespace );
+        self.^compose;
+      } else {
+        die "Could not find rule $ws in grammar";
+      }
     }
-    self.^find_method('ws').wrap: -> $match, |rest {
+    self.^find_method($ws).wrap: -> $match, |rest {
        my $pos = $match.pos + 1;
        $*HIGHWATER = $pos if $pos > $*HIGHWATER;
        my $bt = Backtrace.new;
