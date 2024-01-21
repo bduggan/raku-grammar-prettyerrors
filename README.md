@@ -7,7 +7,7 @@ Make grammars fail parsing with a pretty error instead of returning nil.
 
 Input:
 
-```perl6
+```raku
 use Grammar::PrettyErrors;
 
 grammar G does Grammar::PrettyErrors {
