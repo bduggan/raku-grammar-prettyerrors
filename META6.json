@@ -1,10 +1,10 @@
 {
     "name" : "Grammar::PrettyErrors",
-    "source-url" : "git://github.com/bduggan/p6-grammar-prettyerrors.git",
-    "perl" : "6.*",
+    "source-url" : "git://github.com/bduggan/raku-grammar-prettyerrors.git",
+    "raku" : "6.*",
     "build-depends" : [ ],
     "provides" : {
-        "Grammar::PrettyErrors" : "lib/Grammar/PrettyErrors.pm6"
+        "Grammar::PrettyErrors" : "lib/Grammar/PrettyErrors.rakumod"
     },
     "tags" : [
             "parsing"
