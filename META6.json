@@ -14,7 +14,7 @@
     ],
     "description" : "Make grammars fail parsing with a pretty error instead of returning nil",
     "test-depends" : [ ],
-    "version" : "0.0.4",
+    "version" : "0.0.5",
     "license" : "Artistic-2.0",
     "authors" : [
         "Brian Duggan"
