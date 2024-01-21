@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use Test;
 use Grammar::PrettyErrors;
@@ -39,4 +39,4 @@ Uh oh, something went wrong around line 1.
 Unable to parse subject.
 X
 
-#vim: set syntax perl6
+#vim: set syntax raku

@@ -2,7 +2,7 @@ module := Grammar-PrettyErrors
 version := $(shell jq -r .version META6.json)
 
 test:
-	TEST_AUTHOR=1 prove -e 'perl6 -Ilib' t/*
+	TEST_AUTHOR=1 prove -e 'raku -Ilib' t/*
 
 dist: FORCE
 	echo "Making $(version)"

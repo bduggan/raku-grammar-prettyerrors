@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use Test;
 use Grammar::PrettyErrors;
@@ -30,4 +30,4 @@ is $e.line, 7, 'line is ok';
 is $e.column, 8, 'column is ok';
 is $e.lastrule, 'inner', 'last rule';
 
-#vim: set syntax perl6
+#vim: set syntax raku
